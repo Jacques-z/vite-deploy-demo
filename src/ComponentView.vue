@@ -9,12 +9,14 @@ const Content = computed(
   () =>
     props.p &&
     defineAsyncComponent({
-      loader: () => import(`./components/${[...props.p].join("/")}.vue`),
+      loader: () => import(`./components/${props.p[1]}/${props.p[2]}.vue`),
       errorComponent: Error,
     }),
 );
 </script>
 
 <template>
+  {{ props.p }}
+  {{ [...props.p].slice(1).join("/") }}
   <Content />
 </template>
